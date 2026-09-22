@@ -1,5 +1,5 @@
 import {ChatMistralAI} from "@langchain/mistralai"
-import envConfig from "./config"
+import envConfig from "./config.js"
 
 
 const Model = new ChatMistralAI({
@@ -9,4 +9,4 @@ const Model = new ChatMistralAI({
 
 const response = await Model.invoke("hello")
 
-console.log(response)
+console.log(response.text)
