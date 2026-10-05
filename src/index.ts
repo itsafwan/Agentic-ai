@@ -6,6 +6,6 @@ const model = new ChatGoogleGenerativeAI({
   model: "gemini-3.8-flash",
 });
 
-const response = await model.invoke("hello");
+const response = await model.invoke("create a code of ts that calculates number like 1 + 1 or any number");
 
 console.log(response);
