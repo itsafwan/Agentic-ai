@@ -2,12 +2,16 @@ import { configDotenv } from "dotenv";
 
 configDotenv();
 
-if (!process.env.MISTRAL_AI_KEY) {
-  throw new Error("MISTRAL_AI_KEY is required but not defined.");
-}
+const requiredEnvVariables = ["GOOGLE_GENAI_API_KEY"] as const;
+
+requiredEnvVariables.forEach((variableName) => {
+  if (!process.env[variableName]) {
+    throw new Error(`Environment variable ${variableName} is required but not defined.`);
+  }
+});
 
 const envConfig = {
-  MISTRAL_AI_KEY: process.env.MISTRAL_AI_KEY || "",
+  GOOGLE_GENAI_API_KEY: process.env.GOOGLE_GENAI_API_KEY || "",
 };
 
 export default envConfig;

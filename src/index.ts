@@ -1,12 +1,11 @@
-import {ChatMistralAI} from "@langchain/mistralai"
-import envConfig from "./config.js"
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import envConfig from "./config.js";
 
+const model = new ChatGoogleGenerativeAI({
+  apiKey: envConfig.GOOGLE_GENAI_API_KEY,
+  model: "gemini-3.8-flash",
+});
 
-const Model = new ChatMistralAI({
-  model:"mistral-small-latest",
-  apiKey: envConfig.MISTRAL_AI_KEY
-})
+const response = await model.invoke("hello");
 
-const response = await Model.invoke("hello")
-
-console.log(response.text)
+console.log(response);
